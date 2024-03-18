@@ -1,0 +1,250 @@
+:root {
+  /* ===== Colors ===== */
+  --body-color: #e4e9f7;
+  --sidebar-color: #fff;
+  --primary-color: #ff0000;
+  --primary-color-light: #f6f5ff;
+  --toggle-color: #ddd;
+  --text-color: #707070;
+
+  /* ====== Transition ====== */
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
+@font-face {
+  font-family: AvenirRoman;
+  src: url(../font/Avenir-roman.ttf);
+}
+
+@font-face {
+  font-family: AvenirMedium;
+  src: url(../font/Avenir-medium.ttf);
+}
+
+@font-face {
+  font-family: AvenirBlack;
+  src: url(../font/Avenir\ -black.ttf);
+}
+
+/* general ejs styling */
+
+::selection {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--body-color);
+  transition: var(--tran-05);
+  font-family: AvenirMedium;
+}
+
+body.dark {
+  --body-color: #18191a;
+  --sidebar-color: #242526;
+  --primary-color: #3a3b3c;
+  --primary-color-light: #3a3b3c;
+  --toggle-color: #fff;
+  --text-color: #ccc;
+}
+
+main {
+  padding: 2em 0 0 6em;
+}
+
+@media (width > 80em) {
+  main {
+    padding: 1em 0 0 10em;
+  }
+}
+
+h1,
+h2,
+h3,
+p {
+  color: var(--text-color);
+}
+
+div,
+img,
+article {
+  border-radius: 6px;
+}
+
+/* index.ejs */
+
+.index {
+  padding: 2em 2em 0 7em;
+  display: block;
+}
+
+.index div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  border: solid var(--primary-color);
+  padding: 2em;
+  margin-bottom: 2em;
+}
+
+.index div h2 {
+  margin-bottom: 1em;
+}
+
+.index div img {
+  width: 175px;
+  height: 175px;
+  object-fit: cover;
+}
+
+@media (width > 56em) {
+  .index {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Three columns in the first row */
+    grid-template-rows: repeat(2, auto); /* Two rows with automatic height */
+    gap: 1em; /* Adjust the gap between items */
+  }
+
+  .index div {
+    margin-bottom: unset;
+  }
+
+  .index div img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (width > 81em) {
+  .index {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns in the first row */
+    grid-template-rows: repeat(2, auto); /* Two rows with automatic height */
+    gap: 1em; /* Adjust the gap between items */
+  }
+}
+@media (width > 130em) {
+  .index {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-around;
+    column-gap: 1em;
+    row-gap: 1em;
+  }
+}
+/* overview.ejs */
+.overview article {
+  width: 98%;
+}
+
+.overview ul {
+  border: solid var(--primary-color);
+  background-color: var(--sidebar-color);
+}
+
+.overview ul h2 {
+  text-align: center;
+}
+
+.overview ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.overview ul li img {
+  width: 30%;
+}
+
+@media (width > 80em) {
+  .overview article {
+    display: flex;
+    gap: 2em;
+  }
+
+  .overview ul {
+    overflow: auto;
+    height: 97vh;
+  }
+}
+
+/* detail.ejs */
+
+.detail article {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2em;
+}
+
+.detail img {
+  width: 98%;
+}
+
+.item-info {
+  border: solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+}
+
+.item-info h2 {
+  text-align: center;
+  color: var(--text-color);
+}
+
+.summary h3 {
+  text-align: center;
+  color: var(--text-color);
+}
+
+.summary p {
+  color: var(--text-color);
+}
+
+@media (width > 70em) {
+  .detail article {
+    display: grid;
+    justify-items: center;
+    grid-template-areas:
+      "image info"
+      "sum sum";
+    row-gap: 2em;
+  }
+
+  .detail img {
+    grid-area: image;
+    width: 500px;
+  }
+
+  .item-info {
+    grid-area: info;
+    width: 500px;
+    padding: 0 2em;
+  }
+
+  .summary {
+    grid-area: sum;
+    width: 50%;
+    border: solid var(--primary-color);
+    padding: 2em;
+  }
+}
+
+@media (width > 40em) {
+}

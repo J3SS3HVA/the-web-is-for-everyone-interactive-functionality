@@ -1,0 +1,35 @@
+<%- include('./partials/head') %>
+
+<main class="detail">
+  <article>
+    <% items.forEach(item => { %>
+    <img src="https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>" alt=""/>
+
+    <div class="item-info">
+      <h2><%= item.title %></h2>
+        <p><b>type: </b><%= item.type %></p>
+        <p><b>oba link: </b><%= item.oba_link %></p>
+        <p><b>uitgever: </b><%= item.publisher %></p>
+        <p><b>taal: </b><%= item.language %></p>
+        <p><b>kenmerken: </b><%= item.characteristics %></p>
+        <p><b>onderwerp: </b><%= item.subject %></p>
+        <p><b>ISBN: </b><%= item.ISBN %></p>
+        <p><b>pica nummer: </b><%= item.pica_number %></p>
+        <p><b>SISO: </b><%= item.SISO %></p>
+        <p><b>editie: </b><%= item.editie %></p>
+        <p><b>auteur: </b><%= item.auteur %></p>
+        <p><b>vertaler: </b><%= item.vertaler %></p>
+        <p><b>genre: </b><%= item.genre %></p>
+        <p><b>datum: </b><%= item.datetime %></p>
+        <p><b>prijs: €</b><%= item.price %></p>
+        <p><b>locatie: </b><%= item.location %></p>
+    </div>
+    <div class="summary">
+        <h3>Sammenvatting:</h3>
+        <p><%- item.description %></p>
+    </div>
+    <% }) %>
+  </article>
+</main>
+
+<%- include('./partials/foot') %>
