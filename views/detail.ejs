@@ -7,7 +7,9 @@
 
     <div class="item-info">
       <h2><%= item.title %></h2>
-        <p><b>type: </b><%= item.type %></p>
+      <h3>Sammenvatting:</h3>
+        <p><%- item.description %></p>
+        <!-- <p><b>type: </b><%= item.type %></p>
         <p><b>oba link: </b><%= item.oba_link %></p>
         <p><b>uitgever: </b><%= item.publisher %></p>
         <p><b>taal: </b><%= item.language %></p>
@@ -22,11 +24,10 @@
         <p><b>genre: </b><%= item.genre %></p>
         <p><b>datum: </b><%= item.datetime %></p>
         <p><b>prijs: €</b><%= item.price %></p>
-        <p><b>locatie: </b><%= item.location %></p>
+        <p><b>locatie: </b><%= item.location %></p> -->
     </div>
     <div class="summary">
-        <h3>Sammenvatting:</h3>
-        <p><%- item.description %></p>
+        
     </div>
     <% }) %>
   </article>

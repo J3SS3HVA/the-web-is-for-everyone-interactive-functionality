@@ -1,45 +1,36 @@
 <%- include('./partials/head') %>
 <main class="index">
-  
-
-    <% families.forEach(function(family) { %>
-      <% family.family_member.forEach(function(member) { %>
-              <% profiles.forEach(function(profile) { %>
-                      <% if (profile.id === member) { %>
-                        <div onclick="redirectOverview()">
-                          <h2><%= profile.name %></h2>  
-                          <img src="https://fdnd-agency.directus.app/assets/<%= profile.avatar %>">
-                        </div>
-                      <% } %>
-              <% }) %>
-      <% }) %>
-<% }) %>
-
-<!--     
-    <div onclick="redirectOverview()">
-      <h2>Jesse2</h2>  
-      <img src="//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia1.tenor.com%2Fimages%2F316a7f998b28fed91c3cb8bb338eae21%2Ftenor.gif%3Fitemid%3D14918977&f=1&nofb=1&ipt=dcce185a153107c82507d4fa1d9cdfb91cbf2c6ea5bc5e1aca613a93c03b3d98&ipo=images" alt="">
-    </div>
-    
-    <div onclick="redirectOverview()">
-      <h2>Jesse3</h2>  
-      <img src="//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia1.tenor.com%2Fimages%2F316a7f998b28fed91c3cb8bb338eae21%2Ftenor.gif%3Fitemid%3D14918977&f=1&nofb=1&ipt=dcce185a153107c82507d4fa1d9cdfb91cbf2c6ea5bc5e1aca613a93c03b3d98&ipo=images" alt="">
-    </div>
-    
-    <div onclick="redirectOverview()">
-      <h2>jesse4</h2>  
-      <img src="//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia1.tenor.com%2Fimages%2F316a7f998b28fed91c3cb8bb338eae21%2Ftenor.gif%3Fitemid%3D14918977&f=1&nofb=1&ipt=dcce185a153107c82507d4fa1d9cdfb91cbf2c6ea5bc5e1aca613a93c03b3d98&ipo=images" alt="">
-    </div>
-    
-    <div onclick="redirectOverview()">
-      <h2>jesse5</h2>  
-      <img src="//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia1.tenor.com%2Fimages%2F316a7f998b28fed91c3cb8bb338eae21%2Ftenor.gif%3Fitemid%3D14918977&f=1&nofb=1&ipt=dcce185a153107c82507d4fa1d9cdfb91cbf2c6ea5bc5e1aca613a93c03b3d98&ipo=images" alt="">
-    </div>
-  </main> -->
-  
-  <script>
-    function redirectOverview() {
-      window.location.href = '/overview';
-    }
-  </script>
+  <article>
+    <h2>Boeken</h2>
+    <ul>
+        <% data.filter(item => item.item_type === 'book').forEach(book => { %>
+            <li onclick="window.location.href='./detail/<%= book.id %>'">
+                <h3><%= book.title %></h3>
+                <img src="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>" alt="<%= book.title %> Image">
+                <p>€ <%= book.price %></p>
+            </li>
+        <% }); %>
+    </ul>
+    <h2>CD's</h2>
+    <ul>
+        <% data.filter(item => item.item_type === 'cd').forEach(cd => { %>
+            <li li onclick="window.location.href='./detail/<%= cd.id %>'">
+                <h3><%= cd.title %></h3>
+                <img src="https://fdnd-agency.directus.app/assets/<%= cd.afbeelding %>" alt="<%= cd.title %> Image">
+                <p>€ <%= cd.price %></p>
+            </li>
+        <% }); %>
+    </ul>
+    <h2>Activiteiten</h2>
+    <ul>
+        <% data.filter(item => item.item_type === 'activity').forEach(activity => { %>
+            <li li onclick="window.location.href='./detail/<%= activity.id %>'">
+                <h3><%= activity.title %></h3>
+                <img src="https://fdnd-agency.directus.app/assets/<%= activity.afbeelding %>" alt="<%= activity.title %> Image">
+                <p>€ <%= activity.price %></p>
+            </li>
+        <% }); %>
+    </ul>
+  </article>
+</main>
 <%- include('./partials/foot') %>

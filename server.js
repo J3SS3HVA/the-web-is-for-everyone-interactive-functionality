@@ -24,7 +24,27 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'))
 
 // 2. routes
-app.get('/', async function(request, response) {
+app.get('/', function(request, response) {
+  fetchJson(apiItem).then((items) => {
+      console.log("API Response:", items);
+
+  
+      if (items && items.data) {
+  
+          console.log("Data in Response:", items.data);
+
+  
+          response.render('index', {
+              data: items.data 
+          });
+      } else {
+          console.error("Invalid or unexpected API response format");
+          response.status(500).send("Internal Server Error");
+      }
+  });
+});
+
+app.get('/family', async function(request, response) {
     try {
       const families = await fetchJson(apiFamily);
       const profiles = await fetchJson(apiProfile);
@@ -32,7 +52,7 @@ app.get('/', async function(request, response) {
       console.log(families.data);
       console.log(profiles.data);
   
-      response.render('index', {
+      response.render('family', {
         families: families.data,
         profiles: profiles.data,
       });
@@ -42,25 +62,6 @@ app.get('/', async function(request, response) {
     }
   });
 
-app.get('/overview', function(request, response) {
-    fetchJson(apiItem).then((items) => {
-        console.log("API Response:", items);
-
-    
-        if (items && items.data) {
-    
-            console.log("Data in Response:", items.data);
-
-    
-            response.render('overview', {
-                data: items.data 
-            });
-        } else {
-            console.error("Invalid or unexpected API response format");
-            response.status(500).send("Internal Server Error");
-        }
-    });
-});
 
 app.get('/detail/:id', function(request, response){
     console.log(request.params)
@@ -74,7 +75,13 @@ app.get('/detail/:id', function(request, response){
 })
 
 app.post('/detail/:id', function(request, response){
-  
+    fetchJson(apiItem + '?filter={"id":' + request.params.id + '}').then((items) => {
+        response.render('detail', {
+        
+            items: items.data/*hier zeg ik dat iedereen getoond moet worden*/
+
+         });
+    })
 })
 
 // 3. Start de webserver
