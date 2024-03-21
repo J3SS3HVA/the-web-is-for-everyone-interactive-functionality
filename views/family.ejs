@@ -6,10 +6,12 @@
       <% family.family_member.forEach(function(member) { %>
               <% profiles.forEach(function(profile) { %>
                       <% if (profile.id === member) { %>
-                        <div onclick="redirectIndex()">
+                        <a href="/">
+                        <div>
                           <h2><%= profile.name %></h2>  
                           <img src="https://fdnd-agency.directus.app/assets/<%= profile.avatar %>">
                         </div>
+                      </a>
                       <% } %>
               <% }) %>
       <% }) %>
@@ -36,10 +38,5 @@
       <img src="//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia1.tenor.com%2Fimages%2F316a7f998b28fed91c3cb8bb338eae21%2Ftenor.gif%3Fitemid%3D14918977&f=1&nofb=1&ipt=dcce185a153107c82507d4fa1d9cdfb91cbf2c6ea5bc5e1aca613a93c03b3d98&ipo=images" alt="">
     </div>
   </main> -->
-  
-  <script>
-    function redirectIndex() {
-      window.location.href = '/';
-    }
-  </script>
+
 <%- include('./partials/foot') %>

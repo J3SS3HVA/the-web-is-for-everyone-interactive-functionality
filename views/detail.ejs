@@ -3,7 +3,7 @@
 <main class="detail">
   <article>
     <% items.forEach(item => { %>
-    <img src="https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>" alt=""/>
+    <img class="detail-img" src="https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>" alt=""/>
 
     <div class="item-info">
       <h2><%= item.title %></h2>
@@ -25,12 +25,20 @@
         <p><b>datum: </b><%= item.datetime %></p>
         <p><b>prijs: €</b><%= item.price %></p>
         <p><b>locatie: </b><%= item.location %></p> -->
+        <form action="/detail/<%= item.id %>" method="post"><button class="add">toevoegen aan Leeslijst</button></form>
     </div>
     <div class="summary">
         
     </div>
+    <dialog class="item-added">
+      <button><i class='bx bx-x'></i></button>
+      <%= item.title %>
+      <img src="https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>" alt=""/>
+      <a href="/leeslijst">Bekijk je lijst</a>
+    </dialog>
     <% }) %>
   </article>
+  
 </main>
 
 <%- include('./partials/foot') %>
