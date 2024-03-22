@@ -89,7 +89,7 @@ article {
   width: 98%;
 }
 
-.index ul h2 {
+.index h2 {
   text-align: center;
 }
 
@@ -194,6 +194,18 @@ article {
 
 /* detail.ejs */
 
+.filter{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.filter-active{
+  background-color: #000000a6;
+  z-index: 100;
+  border-radius: 0px;
+}
+
 .detail article {
   display: flex;
   flex-direction: column;
@@ -222,12 +234,26 @@ article {
   color: var(--text-color);
 }
 
-.item-info .add{
+.item-info form{
+  margin: auto;
+}
+
+.item-info form .add {
   border: none;
   background-color: var(--primary-color);
   color: var(--primary-color-light);
   margin: auto;
+  padding: 2em;
+  border-radius: 50px;
+  transition: 0.2s;
+
+
+  &:hover {
+    transform: translateY(-10px);
+    transition: 0.2s;
+  }
 }
+
 
 .summary p {
   color: var(--text-color);
@@ -239,10 +265,11 @@ article {
   height: 15em;
   z-index: 10;
   background-color: var(--sidebar-color);
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  z-index: 101;
 }
 
 .item-added img{
@@ -268,8 +295,13 @@ article {
 }
 
 .closed{
-  display: none;
+  display: none !important;
 }
+
+.show{
+  display: flex;
+}
+
 @media (width > 70em) {
   .detail article {
     display: grid;

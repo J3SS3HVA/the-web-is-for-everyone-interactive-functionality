@@ -26,19 +26,30 @@ modeSwitch.addEventListener("click" , () =>{
 
 const listpopup = body.querySelector(".item-added") 
 const closelist = body.querySelector(".item-added button") 
+const currentUrl = window.location.href;
+const button = document.querySelector(".add");
+const filter = document.querySelector('.filter')
 
 closelist.addEventListener("click" , () =>{
     listpopup.classList.add("closed");
+    filter.classList.remove('filter-active')
 })
 
+
 function setButtonText() {
-    const button = document.querySelector('.add');
-    const itemId = button.getAttribute('data-item-id'); // Haal het item ID op uit het attribuut
-  
-    // Controleer of het item ID overeenkomt met een item in de leeslijst
-    if (leeslijst[itemId]) {
-      button.innerText = "Toegevoegd";
+    // Haal de URL op van de huidige pagina
+    
+
+    // Controleer of de URL het "added=true" query parameter bevat
+    if (currentUrl.includes("added=true")) {
+      // Dynamisch de tekst van de knop instellen
+      
+      button.innerText = "added";
+      listpopup.classList.add("show");
+      filter.classList.toggle('filter-active')
     }
   }
-  
+
+  // Roep de functie aan zodra de pagina geladen is
   window.onload = setButtonText;
+  
