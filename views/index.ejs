@@ -8,7 +8,6 @@
             <a href="./detail/<%= book.id %> ">
                 <h3><%= book.title %></h3>
                 <img src="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>" alt="<%= book.title %> Image">
-                <p>€ <%= book.price %></p>
             </a>       
         </li>
         
@@ -21,7 +20,6 @@
             <a href="./detail/<%= cd.id %>">
                 <h3><%= cd.title %></h3>
                 <img src="https://fdnd-agency.directus.app/assets/<%= cd.afbeelding %>" alt="<%= cd.title %> Image">
-                <p>€ <%= cd.price %></p>
             </a>
         </li>
         <% }); %>
@@ -33,7 +31,6 @@
             <a href="./detail/<%= activity.id %>"></a>
                 <h3><%= activity.title %></h3>
                 <img src="https://fdnd-agency.directus.app/assets/<%= activity.afbeelding %>" alt="<%= activity.title %> Image">
-                <p>€ <%= activity.price %></p>
             </a>
         </li>
         <% }); %>

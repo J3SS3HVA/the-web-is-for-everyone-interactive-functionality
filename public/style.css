@@ -74,9 +74,15 @@ main {
 h1,
 h2,
 h3,
-p {
+p,
+a {
   color: var(--text-color);
 }
+
+a{
+  text-decoration: none;
+}
+
 
 div,
 img,
@@ -106,28 +112,58 @@ article {
   width: 30%;
 }
 
-@media (width > 80em) {
-
+@media (min-width: 80em) {
   .index ul {
     overflow: auto;
     display: flex;
     gap: 2em;
     scrollbar-color: red transparent;
     scrollbar-width: thin;
+    scroll-snap-type: mandatory;
+  scroll-snap-points-x: repeat(100vw);
+  scroll-snap-type: x mandatory;
   }
 
-  .index ul h3{
+  .index ul h3 {
     height: -webkit-fill-available;
   }
 
-  .index ul li img{
+  .index ul li {
+    padding: 2em;
+    scroll-snap-align: start;
+    animation: fade-in-on-enter--fade-out-on-exit linear;
+    animation-timeline: view();
+  }
+
+  .index ul li img {
     width: 300px;
     height: 400px;
     object-fit: cover;
   }
+
+  /* https://scroll-driven-animations.style/demos/contact-list/css/ */
+  @supports(animation-timeline: view()) {
+    @keyframes fade-in-on-enter--fade-out-on-exit {
+        entry 0%  {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        entry 100%  {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        exit 0% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        exit 100% {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+    }
+  
 }
-
-
+}
 /* family.ejs */
 
 .family {
