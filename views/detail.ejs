@@ -27,9 +27,14 @@
         <p><b>locatie: </b><%= item.location %></p> -->
         <form action="/detail/<%= item.id %>" method="post"><button class="add">toevoegen aan Leeslijst</button></form>
     </div>
-    <div class="summary">
-        
-    </div>
+    <form action="/detail/<%= item.id %>" method="post" class="recensie">
+      <fieldset class="summary">
+          <legend>Laat een recensie achter</legend>
+          <textarea name="review" id="review" rows="4" cols="50" placeholder="hier je recensie"></textarea>
+          <input type="submit" value="Verzenden">
+      </fieldset>
+  </form>
+  
     <dialog class="item-added">
       <button><i class='bx bx-x'></i></button>
       <%= item.title %>

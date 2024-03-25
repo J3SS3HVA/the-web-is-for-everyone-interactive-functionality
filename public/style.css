@@ -75,7 +75,8 @@ h1,
 h2,
 h3,
 p,
-a {
+a,
+legend {
   color: var(--text-color);
 }
 
@@ -289,10 +290,18 @@ article {
     transition: 0.2s;
   }
 }
+.recensie{
+  width: 97%;
+}
+.recensie .summary {
+  border: solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-
-.summary p {
-  color: var(--text-color);
+.recensie .summary textarea{
+  width: 95%;
 }
 
 .item-added {
@@ -359,12 +368,13 @@ article {
     padding: 0 2em;
   }
 
-  .summary {
+  .recensie{
     grid-area: sum;
     width: 50%;
-    border: solid var(--primary-color);
     padding: 2em;
   }
+
+
 }
 
 @media (width > 40em) {
