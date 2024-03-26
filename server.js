@@ -28,24 +28,36 @@ let leeslijst = {}
 
 
 // 2. routes
-app.get('/', function(request, response) {
-  fetchJson(apiItem).then((items) => {
-      console.log("API Response:", items);
+app.get('/', async function(request, response) {
+  try {
+    // Haal zowel de items als de gebruikersgegevens op
+    const itemsPromise = fetchJson(apiItem);
+    const familiesPromise = fetchJson(apiFamily);
+    const profilesPromise = fetchJson(apiProfile);
 
-  
-      if (items && items.data) {
-  
-          console.log("Data in Response:", items.data);
+    // Wacht tot beide fetch-aanroepen zijn voltooid
+    const [items, families, profiles] = await Promise.all([itemsPromise, familiesPromise, profilesPromise]);
 
-  
-          response.render('index', {
-              data: items.data 
-          });
-      } else {
-          console.error("Invalid or unexpected API response format");
-          response.status(500).send("Internal Server Error");
-      }
-  });
+    console.log("Items:", items);
+    console.log("Families:", families);
+    console.log("Profiles:", profiles);
+
+    // Controleer of de respons geldig is
+    if (items && items.data && families && families.data && profiles && profiles.data) {
+      // Rendert de 'index' weergave met de opgehaalde gegevens
+      response.render('index', {
+        items: items.data,
+        families: families.data,
+        profiles: profiles.data
+      });
+    } else {
+      console.error("Invalid or unexpected API response format");
+      response.status(500).send("Internal Server Error");
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    response.status(500).send("Internal Server Error");
+  }
 });
 
 app.get('/family', async function(request, response) {

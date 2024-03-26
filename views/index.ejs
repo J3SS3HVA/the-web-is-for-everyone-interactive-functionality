@@ -3,34 +3,42 @@
   <article>
     <h2>Boeken</h2>
     <ul>
-        <% data.filter(item => item.item_type === 'book').forEach(book => { %>
+        <% items.filter(item => item.item_type === 'book').forEach(book => { %>
         <li>
             <a href="./detail/<%= book.id %> ">
+              <img src="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>" alt="<%= book.title %> Image">
+              <div>
                 <h3><%= book.title %></h3>
-                <img src="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>" alt="<%= book.title %> Image">
+                <p><%= book.auteur %></p>
+              </div>           
             </a>       
-        </li>
-        
+        </li>        
         <% }); %>
     </ul>
     <h2>CD's</h2>
     <ul>
-        <% data.filter(item => item.item_type === 'cd').forEach(cd => { %>
+        <% items.filter(item => item.item_type === 'cd').forEach(cd => { %>
         <li>
             <a href="./detail/<%= cd.id %>">
+              <img src="https://fdnd-agency.directus.app/assets/<%= cd.afbeelding %>" alt="<%= cd.title %> Image">
+              <div>
                 <h3><%= cd.title %></h3>
-                <img src="https://fdnd-agency.directus.app/assets/<%= cd.afbeelding %>" alt="<%= cd.title %> Image">
+                <p><%= cd.auteur %></p>
+              </div>           
             </a>
         </li>
         <% }); %>
     </ul>
     <h2>Activiteiten</h2>
     <ul>
-        <% data.filter(item => item.item_type === 'activity').forEach(activity => { %>
+        <% items.filter(item => item.item_type === 'activity').forEach(activity => { %>
         <li>
-            <a href="./detail/<%= activity.id %>"></a>
+            <a href="./detail/<%= activity.id %>">
+              <img src="https://fdnd-agency.directus.app/assets/<%= activity.afbeelding %>" alt="<%= activity.title %> Image">
+              <div>
                 <h3><%= activity.title %></h3>
-                <img src="https://fdnd-agency.directus.app/assets/<%= activity.afbeelding %>" alt="<%= activity.title %> Image">
+                <p><%= activity.datetime %></p>
+              </div>           
             </a>
         </li>
         <% }); %>
