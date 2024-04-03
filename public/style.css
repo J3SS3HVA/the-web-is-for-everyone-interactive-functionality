@@ -141,6 +141,7 @@ article {
     gap: 2em;
     scrollbar-color: red transparent;
     scrollbar-width: thin;
+    scroll-snap-type: x mandatory;
 
   }
 
@@ -279,7 +280,7 @@ article {
   }
 
   .family article div p{
-    font-size: 1em;
+    font-size: 0.6em;
   }
 }
 
